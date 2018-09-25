@@ -56,7 +56,15 @@
     if (self.childViewControllers.count) {
         viewController.hidesBottomBarWhenPushed = YES;
         
-        UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"nav_left_icon"] style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+        NSString * bundlePath = [[ NSBundle mainBundle] pathForResource: @"EPComponent" ofType :@"bundle"];
+        NSBundle *securityBundle = [NSBundle bundleWithPath:bundlePath];
+        
+        NSString *path01 = [securityBundle pathForResource:@"nav_left_icon" ofType:@"png"];
+        
+        
+        UIImage *tempImage01 = [UIImage imageWithContentsOfFile:path01];
+        
+        UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:tempImage01 style:UIBarButtonItemStylePlain target:self action:@selector(back)];
         viewController.navigationItem.leftBarButtonItem = leftItem;
         
         //如果自定义返回按钮后, 滑动返回可能失效, 需要添加下面的代码
