@@ -48,8 +48,20 @@
     self.photoView = photoView;
     
     UIButton *selectBtn = [[UIButton alloc] init];
-    [selectBtn setImage:[UIImage imageNamed:@"photoPicker_nonSelected_icon.png"] forState:UIControlStateNormal];
-    [selectBtn setImage:[UIImage imageNamed:@"photoPicker_selected_icon.png"] forState:UIControlStateSelected];
+    
+    NSString * bundlePath = [[ NSBundle mainBundle] pathForResource: @"EPComponent" ofType :@"bundle"];
+    NSBundle *securityBundle = [NSBundle bundleWithPath:bundlePath];
+    
+    NSString *path01 = [securityBundle pathForResource:@"photoPicker_nonSelected_icon" ofType:@"png"];
+    
+    
+    UIImage *tempImage01 = [UIImage imageWithContentsOfFile:path01];
+    [selectBtn setImage:tempImage01 forState:UIControlStateNormal];
+    
+    NSString *path02 = [securityBundle pathForResource:@"photoPicker_selected_icon" ofType:@"png"];
+    UIImage *tempImage02 = [UIImage imageWithContentsOfFile:path02];
+    
+    [selectBtn setImage:tempImage02 forState:UIControlStateSelected];
     [selectBtn addTarget:self action:@selector(selectPhotoAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.contentView addSubview:selectBtn];
     self.selectBtn = selectBtn;
