@@ -64,7 +64,14 @@
         
         UIImage *tempImage01 = [UIImage imageWithContentsOfFile:path01];
         
-        UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:tempImage01 style:UIBarButtonItemStylePlain target:self action:@selector(back)];
+        UIButton *backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [backButton setImage:tempImage01 forState:UIControlStateNormal];
+        backButton.frame = CGRectMake(0, 0, 30, 30);
+        [backButton addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
+        CGFloat offset = 10;
+        backButton.imageEdgeInsets = UIEdgeInsetsMake(offset, offset, offset, offset);
+        
+        UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
         viewController.navigationItem.leftBarButtonItem = leftItem;
         
         //如果自定义返回按钮后, 滑动返回可能失效, 需要添加下面的代码

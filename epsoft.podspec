@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 
 
 s.name         = "epsoft"
-s.version      = "1.0.3"
+s.version      = "1.0.5"
 s.summary      = "epsoft component for ios by objective-c"
 
 s.description  =<<-DESC
