@@ -59,7 +59,7 @@
         NSString * bundlePath = [[ NSBundle mainBundle] pathForResource: @"EPComponent" ofType :@"bundle"];
         NSBundle *securityBundle = [NSBundle bundleWithPath:bundlePath];
         
-        NSString *path01 = [securityBundle pathForResource:@"nav_left_icon" ofType:@"png"];
+        NSString *path01 = [securityBundle pathForResource:@"nav_back_icon" ofType:@"png"];
         
         
         UIImage *tempImage01 = [UIImage imageWithContentsOfFile:path01];
